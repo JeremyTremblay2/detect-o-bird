@@ -1,92 +1,41 @@
-# Detect O Bird
-
-
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.iut-clermont.uca.fr/jetremblay/detect-o_bird.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.iut-clermont.uca.fr/jetremblay/detect-o_bird/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
+# Detect'o'Bird
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+L'objectif de ce projet était de réaliser un detect'o'bird capable de détecter un type d'oiseau à partir d'une image.  
+Nous avons réussis à compléter le projets dans les délais, il s'agit d'une classification d'images réalisée via `sklearn` en Python.  
+Ce projet intervient dans le cadre de la deuxième année de DUT informatique.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+## Fichiers
+Vous trouverez dans ce dépôt :
+* ce fichier `README.txt`
+* un fichier de type `.ipynb` pour le notebook. Il contient tout le code documenté ainsi que le rapport expliqué.
+* un fichier `.html` pour la verison numérique du notebook : il ne sera pas possile d'executer le code avec ce fichier, mais il est utile pour la visualisation des données sans passer par Jupyter. 
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Le dataset est bien trop lourd, il n'est pas intégré à ce dépôt. En revanche, vous pouvez le trouver à l'adresse suivante : https://www.kaggle.com/gpiosenka/100-bird-species
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+## Comment lancer le programme ?
+1. Lancer Jupyter, télécharger le dataset.
+2. Vérifier les chemins d'accès, définis en début de programme (après chargement des modules), et les changer si necessaire (s'ils se trouvent à un emplacement différents). Il n'y a que deux chemins à changer normalement : celui du fichier CSV et celui du dossier des images.
+3. Il est possible de modifier la constante `NUMBER_MAX_OF_CLASSES` pour tester plus ou moins de classes d'oiseaux mais attention, ne pas mettre une valeur inférieure à `3` ou supérieure à `50`. De grandes valeurs conduiront à des temps de chargement bien plus longs.
+4. Une fois ceci réalisé, executer toutes les cellules. Au bout d'un moment le programme demande à sauvegarder les images en version redimensionnée (pour les charger plus vite + gain de temps), choisir une option.
+5. Le reste du code devrait se dérouler sans problème.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+> ⚠️ ATTENTION : nous avons remarqué qu'une erreur se produisait parfois et que des fois il manquait des données dans le dataset (cela ne nous est arrivé qu'une fois sur 4 téléchargements du dataset). Si cela arrive, aller dans le dossier de l'oiseau correspondant et ajouter 5 images portant les noms des fichiers.  
+Nous n'avons pas prévus ce problème car le dataset a changé récemment et des images ont été ajoutés, donc s'il vous plaît, soyez vigilants.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Librairies utilisées
+- [x] `os` pour la gestion des chemins, création de dossiers, sauvegarde d'images.
+- [x] `random` pour des tirages aléatoires.
+- [x] `PIL` pour la gestion des images
+- [x] `matplotlib` pour l'affichage de nos divers graphiques
+- [x] `numpy` pour le stockages de toutes nos données
+- [x] `pandas` pour le stockage de nos données dans des DataFrame et Series, ainsi que pour la lecture du fichier CSV.
+- [x] `sklearn` pour l'apprentissage et les prédictions, plus généralement, tous nos modèles.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## Resultats et informations
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+Référez-vous à la notebook si vous souhaitez consulter les résultats obtenus par nos 10 modèles et notre réseau de neurones. Nous sommes autour de 70% d'accuracy actuellement. Ce résultat est largement améliorable.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Auteurs
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Jérémy TREMBLAY  
+Rémi PALISSON
